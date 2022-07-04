@@ -1,5 +1,5 @@
-import { InputDataPost } from "./components/inputDataPost";
-import { MessageList } from "./components/messageList";
+import InputDataPost from "./components/inputDataPost";
+import MessageList from "./components/messageList";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
 
       <div className="row pt-5">
         <div className="col-5">
-          <MessageList arrayPosts = {[1, 2, 3, 4, 7, 5]} />
+          <MessageList />
         </div>
         <div className="col-5">
           <h1>Second row column 2</h1>

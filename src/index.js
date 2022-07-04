@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import {createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux';
+import App from './App';
+import thunk from 'redux-thunk';
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, compose(applyMiddleware(thunk) , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

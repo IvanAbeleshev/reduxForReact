@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import {addPost} from '../redux/actions';
 import { connect } from 'react-redux';
 
-export const InputDataPost = (props) =>{
+const InputDataPost = (props) =>{
     const [dataInput, setDataInput] = useState('');
     
     const handlerSubmit = (event) =>{
         event.preventDefault();
 
-        props.addPost(dataInput);
+        if(dataInput.length ===0 ){
+            return;
+        }
+        const newId = (new Date).getTime().toString();
+        props.addPost({data: dataInput, id: newId});
         setDataInput('');
     };
 
@@ -27,5 +31,6 @@ export const InputDataPost = (props) =>{
             <button type="submit" className="btn btn-primary" onClick={handlerSubmit}>Submit</button>
         </form>
     );
-}
-export default InputDataPost
+};
+
+export default connect(null,{addPost})(InputDataPost);
