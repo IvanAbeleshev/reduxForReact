@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import {addPost} from '../redux/actions';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
 const InputDataPost = (props) =>{
     const [dataInput, setDataInput] = useState('');
-    
+    const dispatch = useDispatch();
     const handlerSubmit = (event) =>{
         event.preventDefault();
 
@@ -12,7 +12,8 @@ const InputDataPost = (props) =>{
             return;
         }
         const newId = (new Date).getTime().toString();
-        props.addPost({data: dataInput, id: newId});
+        dispatch(addPost({data: dataInput, id: newId}));
+        //props.addPost({data: dataInput, id: newId});
         setDataInput('');
     };
 
@@ -33,4 +34,5 @@ const InputDataPost = (props) =>{
     );
 };
 
-export default connect(null,{addPost})(InputDataPost);
+//export default connect(null,{addPost})(InputDataPost);
+export default (InputDataPost);
